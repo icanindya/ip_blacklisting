@@ -47,7 +47,7 @@ object HitCount {
         
       println("Total attackers subnet: " + trueAVP.distinct().count())  
 
-      val predicts = sc.textFile("/media/anindya/New Volume/Datasets/DShield Logs/predicted_ratings_" + (startDate + windowSize))
+      val predicts = sc.textFile("/media/anindya/New Volume/Datasets/DShield Logs/ex1/predicted_ratings_" + (startDate + windowSize))
 
       val predictedAVP = predicts.map { x =>
         val tokens = x.split(",")

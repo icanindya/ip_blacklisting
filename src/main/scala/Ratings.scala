@@ -23,7 +23,7 @@ object Project {
     var windowSize = 5
     var alpha = 0.8
 
-    for (startDate <- 2 to 11) {
+    for (startDate <- 1 to 11) {
       
       var ps = new PrintStream("/media/anindya/New Volume/Datasets/DShield Logs/stat_" + (startDate + windowSize))
 
@@ -56,11 +56,11 @@ object Project {
             if (x._2 > y._2) true
             else false
           }
-          for (attacker <- sortedAttackers) yield (x._1, attacker._1, attacker._2)
+          for (attacker <- sortedAttackers.take(2000)) yield (x._1, attacker._1, attacker._2)
         }
 
       ratings.map { x => x._1 + "," + x._2 + "," + x._3 }
-        .saveAsTextFile("/media/anindya/New Volume/Datasets/DShield Logs/ratings_" + (startDate + windowSize))
+        .saveAsTextFile("/media/anindya/New Volume/Datasets/DShield Logs/ex2/predicted_ratings_" + (startDate + windowSize))
 
       val numVictims = ratings.map { x => x._1 }.distinct().count()
       val numAttackers = ratings.map { x => x._2 }.distinct().count()
